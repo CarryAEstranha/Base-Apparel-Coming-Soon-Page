@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="./script.js"></script>
+
+    <title>Base Apparel</title>
+</head>
+
+<body>
+    <div id="background"></div>
+
+    <div id="mainPage">
+        <div id="pageContent">
+            <main>
+                <section id="section-one">
+                    <header>
+                        <img 
+                            alt="Logo"
+                            src="./assets/logo.svg" 
+                        >
+                    </header>
+
+                    <div id="pageInformation">
+                        <h1>
+                            <span>WE'RE</span>
+                            COMING SOON
+                        </h1>
+
+                        <p>
+                            Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.
+                        </p>
+                    </div>
+
+                    <form 
+                        action="#" 
+                        id="form"
+                        onsubmit="return false"
+                    >
+                        <label 
+                            class="hidden"
+                            for="email-address"
+                        >Insert your email address</label>
+                        <input
+                            id="email-address"
+                            placeholder="Email Address" 
+                            required
+                            type="email"
+                        >
+
+                        <img 
+                            alt="Error" 
+                            id="icon-erro" 
+                            src="./assets/icon-error.svg"
+                        >
+
+                        <button
+                            onclick="sendEmail()" 
+                            type="button"
+                        >
+                            <img 
+                                alt="Sendo email"
+                                src="./assets/icon-arrow.svg" 
+                            >
+                        </button>
+                    </form>
+
+                    <span id="error-span">
+                        Please provide a valid email
+                    </span>
+                </section>
+
+                <section id="section-two"></section>
+
+                <header id="header-mobile">
+                    <img 
+                        alt="Logo"
+                        src="./assets/logo.svg" 
+                    >
+                </header>
+            </main>
+        </div>
+    </div>
+
+    <script>
+		let pageHeight = 0;
+
+		document.addEventListener("DOMContentLoaded", function (event) {
+			let counter = 0
+
+			let loop = setInterval(function () {
+				pageHeight = document.getElementById("pageContent").offsetHeight
+
+				if (window.innerHeight > pageHeight) {
+					document.getElementById("mainPage").style.display = "flex";
+				} else {
+					document.getElementById("mainPage").style.display = "block";
+				}
+
+				counter = counter + 1;
+
+				if (counter === 50) {
+					clearInterval(loop);
+				}
+			}, 100);
+		});
+
+		window.addEventListener("resize", () => {
+			pageHeight = document.getElementById("pageContent").offsetHeight;
+
+			if (window.innerHeight > pageHeight) {
+				document.getElementById("mainPage").style.display = "flex";
+			} else {
+				document.getElementById("mainPage").style.display = "block";
+			}
+		})
+	</script>
+</body>
+
+</html>
